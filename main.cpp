@@ -1,3 +1,31 @@
+/**********************************************************************
+
+  compcell
+  A c++ frontend for XtalComp
+
+  usage:
+  	compcell cell1.cell cell2.cell [-v] [-cart_tol=0.05] [-angle_tol=0.25]
+  options:
+  	-v             : Verbose output
+	-cart_tol=tol  : Sets the tolerance for atoms to be considered as
+		 	 in the same location to tol. Uses absolute cartesian
+		 	 coordinates (not fractional coordinates).
+	-angle_tol=tol : Sets the tolerance for cell angles (in degrees).
+
+  USES:
+
+  XtalComp - Determine if two crystal descriptions represent the same
+  structure
+  Copyright (C) 2011 by David C. Lonie
+  This source code is released under the New BSD License, (the "License").
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+***********************************************************************/
+
 #include "xtalcomp.h"
 #include <iostream>
 #include <fstream>
