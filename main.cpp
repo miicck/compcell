@@ -57,6 +57,10 @@ structure load_cell(std::string filename)
 		lines.push_back(line);
 	}
 
+	std::vector<std::string> unsupported_blocks;
+	unsupported_blocks.push_back("lattice_abc");
+	unsupported_blocks.push_back("positions_abs");
+
 	// Parse the structure from the cell file
 	structure s;
 
@@ -146,10 +150,14 @@ structure load_cell(std::string filename)
 				}
 			}	
 
-			else if (line.find("positions_cart") != std::string::npos)
+			else for (int i=0; i<unsupported_blocks.size(); ++i)
 			{
-				std::cout << "Error, positions_cart not supported: email mjh261@cam.ac.uk\n";
-				throw;
+				std::string block = unsupported_blocks[i];
+				if (line.find(block) != std::string::npos)
+				{
+					std::cout << "Error, " << block << " not supported: email mjh261@cam.ac.uk\n";
+					throw;
+				}
 			}
 		}
 	}
